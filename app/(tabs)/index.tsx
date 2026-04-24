@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
 
-  const [count, setCount] = useState(0);
+  const [showBio, setShowBio] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{count}</Text>
 
-      <Button
-        title="Increase"
-        onPress={() => setCount(count + 1)}
+      <Text style={styles.name}>Daniel Melaku</Text>
+      <Text style={styles.job}>Full Stack Developer</Text>
+
+      <Button 
+        title="Toggle Bio"
+        onPress={() => setShowBio(!showBio)}
       />
+
+      {showBio && (
+        <Text style={styles.bio}>
+          I build mobile and web apps using MERN and React Native.
+        </Text>
+      )}
+
     </View>
   );
 }
@@ -21,10 +30,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
-  text: {
-    fontSize: 40,
-    marginBottom: 20,
+  name: {
+    fontSize: 26,
+    fontWeight: 'bold'
   },
+  job: {
+    fontSize: 18,
+    color: 'gray',
+    marginBottom: 10
+  },
+  bio: {
+    marginTop: 10,
+    fontSize: 16,
+    textAlign: 'center',
+    paddingHorizontal: 20
+  }
 });
