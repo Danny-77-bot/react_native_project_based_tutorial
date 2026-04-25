@@ -1,25 +1,36 @@
+import { Link } from 'expo-router';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
 
-  const [showBio, setShowBio] = useState(false);
+  const [name, setName] = useState('');
+  const [submittedName, setSubmittedName] = useState('');
+
+  const handleSubmit = () => {
+    setSubmittedName(name);
+  };
 
   return (
     <View style={styles.container}>
 
-      <Text style={styles.name}>Daniel Melaku</Text>
-      <Text style={styles.job}>Full Stack Developer</Text>
-
-      <Button 
-        title="Toggle Bio"
-        onPress={() => setShowBio(!showBio)}
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your name"
+        value={name}
+        onChangeText={setName}
       />
 
-      {showBio && (
-        <Text style={styles.bio}>
-          I build mobile and web apps using MERN and React Native.
+      <Button title="Submit" onPress={handleSubmit} />
+
+      {submittedName !== '' && (
+       <view>
+         <Text style={styles.text}>
+          Welcome, {submittedName}!
         </Text>
+        <Link href={"/about"}>GO to about screen </Link>
+       </view>
+        
       )}
 
     </View>
@@ -32,19 +43,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  name: {
-    fontSize: 26,
-    fontWeight: 'bold'
+  input: {
+    borderWidth: 1,
+    width: '80%',
+    padding: 10,
+    marginBottom: 15
   },
-  job: {
-    fontSize: 18,
-    color: 'gray',
-    marginBottom: 10
-  },
-  bio: {
-    marginTop: 10,
-    fontSize: 16,
-    textAlign: 'center',
-    paddingHorizontal: 20
+  text: {
+    marginTop: 20,
+    fontSize: 20
   }
 });
