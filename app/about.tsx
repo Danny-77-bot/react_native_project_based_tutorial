@@ -1,7 +1,9 @@
-import { Link } from "expo-router";
-import { Text, View } from "react-native";
+// import { Link } from "expo-router";
+import { useRouter } from "expo-router";
+import { Button, Text, View } from "react-native";
 
 export default function About() {
+    const route=useRouter();
   return (
     <View
       style={{
@@ -14,11 +16,12 @@ export default function About() {
         This is the About Screen
       </Text>
 
-      <Link href="/">
+      {/* <Link href="/">
         <Text style={{ color: "blue" }}>
           Go Back to Home
         </Text>
-      </Link>
+      </Link> */}
+      <Button title="Go Back to Home" onPress={()=>route.back()} />
     </View>
   );
 }
