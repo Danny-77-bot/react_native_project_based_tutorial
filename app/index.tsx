@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
 
-export default function About() {
+export default function Index() {
   return (
     <View
       style={{
@@ -10,13 +10,11 @@ export default function About() {
         alignItems: "center",
       }}
     >
-      <Text style={{ fontSize: 20, marginBottom: 20 }}>
-        This is the About Screen
-      </Text>
+      <Text>this is the home screen</Text>
 
-      <Link href="/">
-        <Text style={{ color: "blue" }}>
-          Go Back to Home
+      <Link href="/about">
+        <Text style={{ color: "blue", marginTop: 10 }}>
+          Go to About Page
         </Text>
       </Link>
     </View>
